@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Калькулятор стоимости услуг</title>
+<!-- РЕДАКТИРУЕМЫЙ ПРАЙС. Меняйте price (цена в рублях), name, unit и description.
+Если цена неизвестна, укажите null. Для пакетной скидки подходят единицы, содержащие «месяц», кроме «сотрудник в месяц».
+После изменения сохраните файл и обновите страницу. -->
+<script id="price-data" type="application/json">
+[
+  {
+    "description": "первичка, налоги, декларация, ответы на требования",
+    "name": "Бухгалтерия ИП на УСН без сотрудников",
+    "price": 5500.0,
+    "unit": "месяц"
+  },
+  {
+    "description": "до 50 операций в месяц, отчётность, сверки с контрагентами",
+    "name": "Бухгалтерия ООО на УСН",
+    "price": 14000.0,
+    "unit": "месяц"
+  },
+  {
+    "description": "расчёт зарплаты, отпускные, больничные, отчёты в СФР",
+    "name": "Зарплата и кадры",
+    "price": 900.0,
+    "unit": "сотрудник в месяц"
+  },
+  {
+    "description": "вычет за квартиру, лечение или обучение, подача через личный кабинет",
+    "name": "Декларация 3-НДФЛ",
+    "price": 3500.0,
+    "unit": "документ"
+  },
+  {
+    "description": "разбор выписок и первички, исправление ошибок, сверка с налоговой",
+    "name": "Восстановление учёта",
+    "price": 7000.0,
+    "unit": "месяц учёта"
+  },
+  {
+    "description": "ОПиУ, ДДС и баланс в таблице, комментарий к цифрам",
+    "name": "Управленческая отчётность",
+    "price": 12000.0,
+    "unit": "месяц"
+  },
+  {
+    "description": "план поступлений и платежей по неделям, контроль кассовых разрывов",
+    "name": "Платёжный календарь",
+    "price": 6000.0,
+    "unit": "месяц"
+  },
+  {
+    "description": "онлайн-встреча, разбор вопроса, письменные выводы после встречи",
+    "name": "Консультация финансиста",
+    "price": 4000.0,
+    "unit": "час"
+  }
+]
+</script>
+<style>
+:root{font-family:Arial,sans-serif;color:#302343;background:#f6f2fa;line-height:1.5}*{box-sizing:border-box}body{margin:0}header,main,footer{max-width:1160px;margin:auto;padding:28px 24px}header{padding-top:48px}.brand{font-size:clamp(21px,4vw,28px);font-weight:700;letter-spacing:-.4px;color:#64358a;margin-bottom:10px}h1,h2,.total{color:#4d286c}button:not(:disabled):hover{background:#603188}button.secondary:not(:disabled):hover{background:#f0e5fa;color:#542375}h1{font-size:clamp(28px,5vw,42px);line-height:1.15;margin:12px 0}h2{font-size:21px;margin:0 0 18px}p{color:#665873}.eyebrow{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#6b5480}main{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:24px;padding-top:8px}.panel,.service{background:white;border:1px solid #e2d7ec;border-radius:16px;padding:22px;margin-bottom:16px}.service{display:grid;grid-template-columns:24px 1fr;gap:12px}.service:has(input:checked){border-color:#8050b1;background:#f4edfc}.service p{font-size:14px;margin:5px 0 12px}.service label{font-weight:bold;cursor:pointer}.rate{color:#64358a;font-weight:bold}input[type=checkbox]{width:19px;height:19px;accent-color:#7843a5}input[type=text],input[type=number],select{font:inherit;border:1px solid #bca7cf;border-radius:8px;padding:10px;background:white;color:#302343;max-width:100%}input[type=text],select{width:100%}input[type=number]{width:100px;margin-left:10px}input:focus-visible,select:focus-visible,button:focus-visible{outline:3px solid #b991df;outline-offset:3px}.field{display:block;margin:16px 0 6px}.quantity{font-size:14px}.summary{position:sticky;top:20px;align-self:start}.line{display:flex;justify-content:space-between;gap:16px;padding:9px 0;border-bottom:1px solid #ece3f3;font-size:14px}.line span:last-child{white-space:nowrap}.total{font-size:28px;font-weight:bold;margin:16px 0}.note{font-size:13px}button{width:100%;font:inherit;border:1px solid #7843a5;background:#7843a5;color:white;padding:12px;border-radius:9px;cursor:pointer;margin-top:10px}button.secondary{background:white;color:#7843a5}button:disabled{opacity:.5;cursor:default}footer{font-size:13px;color:#665873}.mobile-total{display:none}#status{font-size:13px;min-height:20px}#copy-fallback{width:100%;height:180px} .print-title{display:none}
+@media(max-width:800px){main{grid-template-columns:1fr}header,main,footer{padding-left:16px;padding-right:16px}header{padding-top:28px}.summary{position:static}.panel,.service{padding:18px}.mobile-total{display:flex;position:fixed;bottom:0;left:0;right:0;background:#302343;color:white;padding:14px 20px calc(14px + env(safe-area-inset-bottom));justify-content:space-between;z-index:5;box-shadow:0 -3px 18px #0002}footer{padding-bottom:100px}}
+@media print{body{background:white;color:black}header{padding-top:0}header p,.eyebrow,.inputs,button,footer,.mobile-total,#status,#copy-fallback{display:none!important}main{display:block;padding-top:0}.summary{position:static}.panel{border:0;padding:0}.print-title{display:block}.line{break-inside:avoid}h1{font-size:26px}.total{font-size:24px}}
+/* Фиолетовое оформление */
+:root{background:#f2ebf8;color:#302343}
+header{max-width:none;background:#64358a;color:#fff;padding:38px max(24px,calc((100vw - 1112px)/2)) 34px;margin-bottom:28px;border-bottom:5px solid #b282dc}
+header .brand{color:#fff;font-size:clamp(25px,4vw,34px);margin-bottom:14px}
+header h1{color:#fff}header p{color:#f1e6fa}header .eyebrow{color:#e3cef3}
+h2{color:#542974}.panel,.service{border-color:#d9c8e8;box-shadow:0 4px 18px #48226710}
+.service:has(input:checked){background:#eadcf7;border-color:#8050b1;box-shadow:inset 4px 0 #8050b1}
+.rate,.total{color:#65348b}button{background:#8050b1;border-color:#8050b1}button.secondary{color:#65348b;border-color:#8050b1}
+input[type=checkbox]{accent-color:#8050b1}.mobile-total{background:#64358a}
+@media(max-width:800px){header{padding:28px 16px;margin-bottom:20px}}
+@media print{header{background:white;color:black;border:0;margin-bottom:16px;padding:0}header .brand,header h1,h2,.total{color:black}.panel,.service{box-shadow:none}}
+</style></head><body><header><div class="brand">Евгения Файзуллина</div><div class="eyebrow">Финансист на аутсорсе · Малому бизнесу</div><h1>Рассчитайте стоимость услуг</h1><p>Выберите услуги и объём работы. Расчёт можно скопировать и отправить в мессенджере.</p></header><main><section class="inputs"><div class="panel"><h2>Ваши данные</h2><label for="client">Как к вам обращаться</label><input id="client" type="text" placeholder="Ваше имя" maxlength="100" autocomplete="name"></div><h2>Услуги и объём</h2><div id="services"></div><div class="panel"><h2>Условия расчёта</h2><label class="field" for="urgent">Срок выполнения</label><select id="urgent"><option value="0">Обычный срок</option><option value="1">Срочно · +30%</option></select><label class="field" for="vat">НДС</label><select id="vat"><option value="0">Без НДС</option><option value="1">НДС 20% сверху</option></select><p class="note">От трёх разных услуг — скидка 5% на всю сумму. При оплате сразу за 6 месяцев и более — 10% на месячные услуги с количеством от 6. Применяется одна скидка, большая в рублях.</p><label><input id="package" type="checkbox"> Оплата выбранных месячных услуг сразу за 6 месяцев или более</label><p class="note">Для зарплаты укажите число сотрудников × число месяцев. Эта услуга не участвует в пакетной скидке. Срочность начисляется после скидки, НДС — после срочности.</p></div></section><aside class="summary panel" aria-label="Расшифровка расчёта"><h2>Ваш расчёт</h2><p id="client-output"></p><div id="breakdown"></div><div class="total" id="total" aria-live="polite">0 ₽</div><p class="note" id="hint">Выберите хотя бы одну услугу.</p><button id="copy" disabled>Скопировать расчёт</button><button id="print" class="secondary" disabled>Распечатать или сохранить PDF</button><div id="status" role="status"></div><textarea id="copy-fallback" hidden readonly aria-label="Текст расчёта для ручного копирования"></textarea></aside></main><footer>Расчёт подготовлен по выбранным вами услугам и условиям.</footer><div class="mobile-total"><span>Итого</span><strong id="mobile-sum">0 ₽</strong></div>
+<script>
+'use strict';
+// НАСТРОЙКИ РАСЧЁТА: проценты и пороги можно изменить здесь.
+const RULES={urgency:30,volume:5,volumeCount:3,package:10,months:6,vat:20};
+const services=JSON.parse(document.getElementById('price-data').textContent);
+const $=id=>document.getElementById(id), money=n=>new Intl.NumberFormat('ru-RU',{maximumFractionDigits:2}).format(n).replace(/\u00a0|\u202f/g,' ')+' ₽', round=n=>Math.round((n+Number.EPSILON)*100)/100;
+const isMonthly=s=>s.unit.includes('месяц')&&!s.unit.includes('сотрудник');
+services.forEach((s,i)=>{const card=document.createElement('div');card.className='service';const check=document.createElement('input');check.type='checkbox';check.id='s'+i;const body=document.createElement('div');const label=document.createElement('label');label.htmlFor=check.id;label.textContent=s.name;const desc=document.createElement('p');desc.textContent=s.description;const rate=document.createElement('div');rate.className='rate';rate.textContent=(s.price===null?'Уточнить':money(s.price))+' / '+s.unit;const qtyLabel=document.createElement('label');qtyLabel.className='quantity';qtyLabel.textContent='Количество ('+s.unit+')';const qty=document.createElement('input');qty.type='number';qty.id='q'+i;qty.min=s.unit==='час'?'0.5':'1';qty.step=s.unit==='час'?'0.5':'1';qty.value='1';qty.disabled=true;qty.setAttribute('aria-label','Количество: '+s.name);check.addEventListener('change',()=>{qty.disabled=!check.checked;update()});qty.addEventListener('input',update);qtyLabel.append(qty);body.append(label,desc,rate,qtyLabel);card.append(check,body);$('services').append(card)});
+let calculationText='';
+function update(){const selected=services.map((s,i)=>({...s,i,q:Number($('q'+i).value)})).filter(s=>$('s'+s.i).checked);const invalid=selected.some(s=>!$('q'+s.i).checkValidity()||s.q<=0);const unknown=selected.some(s=>s.price===null);const base=round(selected.reduce((sum,s)=>sum+(s.price||0)*s.q,0));const volume=selected.length>=RULES.volumeCount?round(base*RULES.volume/100):0;const packageBase=$('package').checked?selected.filter(s=>isMonthly(s)&&s.q>=RULES.months).reduce((sum,s)=>sum+(s.price||0)*s.q,0):0;const pack=round(packageBase*RULES.package/100);const discount=Math.max(volume,pack);const discountLabel=pack>volume?'Пакетная скидка 10%':'Скидка за объём 5%';const urgency=$('urgent').value==='1'?round((base-discount)*RULES.urgency/100):0;const vat=$('vat').value==='1'?round((base-discount+urgency)*RULES.vat/100):0;const total=round(base-discount+urgency+vat);$('breakdown').replaceChildren();const lines=[];function line(a,b){const row=document.createElement('div');row.className='line';const left=document.createElement('span'),right=document.createElement('span');left.textContent=a;right.textContent=b;row.append(left,right);$('breakdown').append(row);lines.push(a+': '+b)}selected.forEach(s=>line(s.name+' — '+s.q+' '+s.unit+' × '+(s.price===null?'уточнить':money(s.price)),s.price===null?'уточнить':money(round(s.price*s.q))));line('Сумма услуг',money(base));line(discount?discountLabel:'Скидка',discount?'−'+money(discount):money(0));line('Срочность'+($('urgent').value==='1'?' 30%':''),money(urgency));line($('vat').value==='1'?'НДС 20%':'Без НДС',money(vat));const display=invalid?'Проверьте количество':unknown?'Итого уточнить':money(total);$('total').textContent='Итого: '+display;$('mobile-sum').textContent=display;$('client-output').textContent=$('client').value.trim()?'Для: '+$('client').value.trim():'';$('hint').textContent=invalid?'Введите положительное количество с указанным шагом.':unknown?'Стоимость услуг без цены нужно уточнить. Показаны суммы по известным ценам.':selected.length?'Суммы округлены до копеек на каждом этапе.':'Выберите хотя бы одну услугу.';$('copy').disabled=$('print').disabled=!selected.length||invalid;calculationText=['Расчёт стоимости услуг',$('client-output').textContent,...lines,'Итого: '+display,$('package').checked?'Условие: оплата месячных услуг от 6 месяцев сразу.':''].filter(Boolean).join('\n');$('status').textContent='';$('copy-fallback').hidden=true;}
+['client','urgent','vat','package'].forEach(id=>$(id).addEventListener('input',update));$('copy').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(calculationText);$('status').textContent='Расчёт скопирован.'}catch(e){const area=$('copy-fallback');area.value=calculationText;area.hidden=false;area.focus();area.select();let done=false;try{done=document.execCommand('copy')}catch(e){}$('status').textContent=done?'Расчёт скопирован.':'Выделенный текст можно скопировать вручную.';if(done)area.hidden=true}});$('print').addEventListener('click',()=>window.print());update();
+</script></body></html>
